@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Proposta de Show - Média 6</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            color: #e0e0e0;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #111111;
+            border: 1px solid #222;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .header {
+            background: #050505;
+            border-bottom: 4px solid #b91c1c; /* Dark Red */
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header-logo {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 36px;
+            text-decoration: none;
+            letter-spacing: -1px;
+            font-family: 'Arial Black', sans-serif;
+            text-transform: uppercase;
+        }
+        .header-logo span { color: #b91c1c; }
+        .header-badge {
+            display: inline-block;
+            background-color: #b91c1c;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+        .content { padding: 40px 30px; }
+        .content h2 {
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid #b91c1c;
+            padding-left: 15px;
+        }
+        .info-box {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .info-row {
+            display: flex;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label {
+            width: 35%;
+            background: #222;
+            padding: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #888;
+            border-right: 1px solid #2a2a2a;
+        }
+        .info-value {
+            width: 65%;
+            padding: 15px;
+            color: #fff;
+            font-size: 14px;
+        }
+        .message-box {
+            background: #0f0f0f;
+            border: 1px dashed #444;
+            padding: 20px;
+            margin-top: 20px;
+            color: #ccc;
+            font-style: italic;
+            font-family: monospace;
+        }
+        .btn-container { text-align: center; margin-top: 30px; }
+        .button {
+            display: inline-block;
+            background-color: #b91c1c;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 2px;
+            border: 1px solid #b91c1c;
+            transition: all 0.3s;
+        }
+        .button:hover {
+            background-color: #000;
+            color: #b91c1c;
+            border-color: #b91c1c;
+        }
+        .footer {
+            background: #080808;
+            padding: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            border-top: 1px solid #222;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        @media only screen and (max-width: 600px) {
+            .info-row { flex-direction: column; }
+            .info-label, .info-value { width: 100%; border-right: none; }
+            .info-label { padding-bottom: 5px; border-bottom: none; color: #b91c1c; }
+            .info-value { padding-top: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="header-logo">MÉDIA <span>6</span></div>
+            <div class="header-badge">Sistema de Produção</div>
+        </div>
+    <div class="content">
+        <h2>Nova Proposta Recebida</h2>
+        <p style="margin-bottom: 20px; color: #aaa; font-size: 14px;">
+            Uma nova solicitação de show/contato foi preenchida no site oficial.
+        </p>
+        <div class="info-box">
+            <div class="info-row">
+                <div class="info-label">Nome do Cliente</div>
+                <div class="info-value">{{ user_name }}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">{{ contact_type }}</div> <div class="info-value">
+                    <a href="{{ contact_link }}" target="_blank" style="color: #fff; text-decoration: none;">
+                        {{ contact_display }} </a>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Data do Envio</div>
+                <div class="info-value">{{ email_date }}</div>
+            </div>
+        </div>
+        <p style="font-size: 12px; color: #b91c1c; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">
+            Mensagem do Cliente:
+        </p>
+        <div class="message-box">
+            "{{ user_message }}"
+        </div>
+    <div class="btn-container">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+                <td align="center" style="border-radius: 4px; background-color: #B91C1C;">
+                    <a 
+                        href="{{ contact_link }}" 
+                        target="_blank" 
+                        style="
+                            background-color: #B91C1C; 
+                            border: 1px solid #B91C1C; 
+                            padding: 15px 30px; 
+                            display: inline-block; 
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                            font-size: 14px; 
+                            font-weight: bold; 
+                            line-height: 1.2; 
+                            text-align: center; 
+                            text-decoration: none; 
+                            color: #ffffff; 
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        "
+                    >
+                        Contatar Cliente via {{ contact_type }}
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+        <div class="footer">
+            <p>Painel Administrativo Média 6</p>
+            <p style="margin-top: 5px;">W.A Produções e Eventos</p>
+        </div>
+    </div>
+</body>
+</html>
