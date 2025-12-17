@@ -27,7 +27,5 @@ class MailApplicationService:
             user_message=payload.message,
         )
         
-        print(success)
-
         if not success:
             raise RuntimeError("Falha ao enviar email")

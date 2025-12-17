@@ -1,4 +1,5 @@
 from fastapi import APIRouter, status
+from app.core.config import settings
 
 router = APIRouter(
     prefix="/health",
@@ -7,4 +8,4 @@ router = APIRouter(
 
 @router.get("", status_code=status.HTTP_200_OK)
 async def health():
-    return {"status": "ok"}
+    return {"status": "maintenance" if settings.is_maintenance else "ok"}
