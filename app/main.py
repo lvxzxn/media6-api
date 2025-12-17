@@ -9,6 +9,7 @@ from app.core.error_handler import app_exception_handler
 from app.modules.auth.router import router as auth_router
 from app.modules.events.router import router as events_router
 from app.modules.mail.router import router as mail_router
+from app.modules.health.router import router as health_router
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Media6 API")
@@ -23,6 +24,7 @@ def create_app() -> FastAPI:
 
     app.add_exception_handler(AppException, app_exception_handler)
 
+    app.include_router(health_router)
     app.include_router(auth_router)
     app.include_router(events_router)
     app.include_router(mail_router)
