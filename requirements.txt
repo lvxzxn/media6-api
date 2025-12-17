@@ -6,4 +6,5 @@ uvicorn
 jinja2
 pydantic
 pydantic[email]
+pydantic-settings
 httpx
